@@ -1,25 +1,21 @@
 const greetings = require("./greetings");
 const fallback = require("./fallback");
-const getstart = require("./getstart");
+const promotion = require("./promotion");
 const member = require("./member");
-const order = require("./Order");
-const confirm = require("./confirm");
+const platform = require("./platform");
+const phone = require("./phone");
 const payment = require("./payment");
-const thankyou = require("./Thankyou");
+const contactus = require("./ContactUs");
 const orderlist = require("./orderlist");
-const addmem = require("./addmem");
-const addmemtoDB = require("./addmemtoDB");
 
 module.exports = {
   greetings,
   fallback,
-  getstart,
+  promotion,
   member,
-  order,
-  confirm,
+  platform,
+  phone,
   payment,
-  thankyou,
+  contactus,
   orderlist,
-  addmem,
-  addmemtoDB
 };

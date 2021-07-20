@@ -12,15 +12,13 @@ const { get } = require("lodash");
 const { getUserProfile, getImageContent } = require("./src/middleware/line");
 const {
   greetings,
+  contactus,
   fallback,
-  getstart,
+  promotion,
   member,
-  order,
-  confirm,
-  payment,
+  platform,
   orderlist,
-  addmem,
-  addmemtoDB,
+  phone,
 } = require("./src/resposeMessage");
 const {
   saveUserProfile,
@@ -40,23 +38,6 @@ const client = new line.Client(config);
 
 Sentry.init({ dsn: process.env.SENTRY_DSN, env: process.env.SENTRY_ENV });
 
-// figlet(
-//   `${process.env.APP_NAME}`,
-//   {
-//     font: "isometric3",
-//     horizontalLayout: "default",
-//     verticalLayout: "default",
-//   },
-//   function (err, data) {
-//     if (err) {
-//       console.log("Something went wrong...");
-//       console.dir(err);
-//       return;
-//     }
-//     console.log(data);
-//   }
-// );
-
 app.use(Sentry.Handlers.requestHandler());
 
 app.get("/", (req, res) => res.send("Hello World!"));
@@ -72,7 +53,7 @@ app.post(
     Promise.all(
       req.body.events.map((event) => {
         console.log("event", event);
-        // check verify webhook event
+
         if (
           event.replyToken === "00000000000000000000000000000000" ||
           event.replyToken === "ffffffffffffffffffffffffffffffff"
@@ -80,13 +61,11 @@ app.post(
           return;
         }
 
-        //ข้อความที่ต้องการให้แสดงใน Chat Tool
         const returnMessage = handleEvent(event, req);
         return returnMessage;
       })
     )
       .then((returnMessage) => {
-        //ให้ส่งไปในรูปแบบนี้
         res.status(200).send(returnMessage);
       })
       .catch((err) => {
@@ -112,18 +91,18 @@ async function handleEvent(event, req) {
       projectId: dialogflowProjectId,
       credentials: {
         type: "service_account",
-        project_id: "f15p-slxavh",
-        private_key_id: "781a2aee5d1a549285ac6fa38f47f421b8a926a4",
+        project_id: "adaralinebot-wkyk",
+        private_key_id: "310bae9f42c8b513f6b099b21de7889d62ec0aef",
         private_key:
-          "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCz0PojDsyajGqf\nWeaBnUgCnhr2c5xvQvv5xzm2sSQqwIIgasAsZoUR2tmV/2C4zC2J1OUpux1WxDGE\n1+8abZUnUyCUj3Os739BaKsCy9AgASx3Bf8ZEUAxZnSRb+CD68l1B16HhU2wmwja\n35JKtkQhRTNzYGUgbsff7iRhwlXuXJ1U7Dw1MYTTBPU0tTVyw9WzPMFS3bKDoyfc\nufpaXWPCbblU6++VYoRD58wu2+gl9gYnNkCMbiza8zqkjewcDWUOMQLtslZlOFS9\nzLerrtaRB/wUdaSpYFHOYa6ZOB7bsscCEJBBY9n6vSsFpRgzLfGNOjMbPln003mn\nIaSHiQrRAgMBAAECggEAM7fT8fhkNcFUO1/ukfIMT6BszdyjrkacVZONEHQznE5B\nPxSlEEAuXtvMwD0y8wPaxy1h+hY00otcWMKIpVfGUgixMrltwlwiBEyX/xZi1omv\n4c3qOKoDBhJbTadZcmgDSfMkJ6NaHIUCz30FRRLWVqFiMnmTrHfgahJDCZENCSDD\ntqQjGd8AUre4irmYWcYMtiTjx4L4ADMQYubQ9jbgeubBETstYV0bPEVfcAGmTkc7\nekEAFuxk30SkSFVaJVhN5cczPJG/1+cAzo7WLnQRMwXppFwG3cA+tLpQwhfobivs\nBa3fC5sHjQA8eMTclDi9FPNqj5vJ1dBPliB8FeQKTwKBgQDbUaHp0d/2ekltig2k\ne+ngdJsQ4dlq2PykIe0zpUeufXaZ9WD/qd3lxhqEaemhjyYn98JsK5iVFjcG9ZHI\n09kf0y2yFfx6BM+okj+/Z8uEn+0RAxUHXNlHTPbRGi1ZzDyf4FvcGF+4Ef5n9J45\nhKTJAcQoxzCVy+Zidn0HgC2wQwKBgQDR5ABJffvnNm6190O8dcUHivM7bvZri8eE\nEBnfQUzIxK/nIGnn8n4A8ZLpe6kkqEUqcb/rtj9Dvu3SAedKdhiPtYO9cQeKLIfR\nfZfWnRmTPUKzyde0mcF+0NqcrlDxnpN6nUNKVdjMoA3p+E+q3/sYIRX8mOtrhTcy\ntpnQO1ZhWwKBgHRapazX5JruG6CamkxGVTj4g//74g32mmo1eZNpv1LKSy646MIa\ni5fIdu8DBajpuhOANUyQAH4v7/eoNrS1974Tmm2djnnprYXAOUPBvE5bTjk1SmXC\nk59pLJSY77BxU0R6kiF9aOLN4Quj0oGvZoEhh8EelB8UsuBP/lsJXLPjAoGBAKNG\nwMprDRkSiRFZJwJmgz2Y5Bpp+Zw0AqNDezznqXnNOCGOX5SmWUsWofir0CrKE/Qu\nxOPyxEhJMOxburd8IyM4SyGF2h2tAoL/Nq0nTQvzbf46mGjP62xhwI5+NE2h1Ixf\n5kbffWXBZNGL7z24O7bLljUIKKtd2FDFJ+aLImldAoGBAJmp9HPOs+uYdcZYB/Wg\nSpnhwHEROULTNek/XFyDGL5I4tLOdZkEfLhKf+Pl3dM/Cf4KXTTde36wNQ5MjgbR\nDq1/gkQuptYf7vQddsLSGiehdVjig4thgIy8t8QS1ZRlH4bxic3ULkFCm9DQlDnJ\nX4u1Km1Zl4Vjc5ym9soe07Rh\n-----END PRIVATE KEY-----\n",
-        client_email: "dialogflow-tsduqv@f15p-slxavh.iam.gserviceaccount.com",
-        client_id: "103814843287639482109",
+          "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDxr7CGHvSrx2lf\n2cC5lGKgPfmeNBfa8TDb+Y+srp+l57Lj6DmQdkrZMty3u9tY0if5bsywuyE073HX\nCQYW9wUSvlQPy0a1svo8UJm78bZqPPpfk1SmNccdq8S7+WNt+e0y0WxrEMGuuCAM\nYeRWg/kNVOkGU8xFv8ltWZTOJFdgAk6an+chhP7GlO+gF0ZxTcTq/k5rbkQy3HuS\n5f5iff1T7PEU32I9y1V3jXTTgx0V6nxCPxccetdLuvLm9g7K3nRcG7NUDFNohzg5\nLQWk/0nN0VXZ/27I4Rzmwh3MATkVMHQ2Ow0LQRVuzYwF+cuHqKqoP2N9g6j7LuB7\nyVbMagZPAgMBAAECggEAAIhrIriRwIk1hcUUpDQcDY9lbABgZxauDWYc93wBFRwQ\nLGl4KwXfv1/Z1bvfzW/VL7sbT25yMcwvW5KFBWrxA2wRAmHn24G0BIsG87+iL9TH\nlotcHeuzbzDQQ7vWiMkKyVhl3UyRqMF2LKDQoJI0698ajm2D30l/d7LBXbz9xlPp\n4KYaL+8LAnSIIrs1/Db6YY4+hYZoPIwxXYaiN5Q4c+3oA3CwNk+hBT2oeG9Ul4zX\nL1FcckynuH96vnRNzvOHCzHGFQcp6v1KgfxN7bQkDpohE0bEnvcJnr++uVktR+La\nfsamIHrm+q3Xq0aF8bXLTJgxlWbtm+l3CVpiFHRiFQKBgQD5jK9z8rGJInmrX2kL\nLM0UQ7n/LplpiezqnSrkLN3FFNDI0WufERq2w/4zC44x0tmtqSdL2nLs45sGxuaC\nqYG9Tga7aHQHMyKj9U3Ksl15f51Ib4AaPoS9OgHEcYM3i1E76B5/xFjg5qA2FlvZ\nvXE7CjJNEz7xVhi3JYPO5HPF8wKBgQD37vi2cNqlemZmVVN+uJv7AIMQwPGfY/ex\nWPGXnkMnJo6HUUSLXpOvwzAZwTkUOI4tGXRWC9D1pqmuPFJnXB3Ux4pKpvOh3HD8\nTRAaKIs025p+FNndbbvkCgAs5b2ORW0pBFVqgG7rwEybtNAL8210PmVac/3VKPEM\nbXHwuDGJNQKBgGj+zltkg1oFjVeTXyj6gpbCICHDw3xqMapM0l0Km4xuQ6IaqsNU\neP7o260ycXN5GWk9wHDjynLtGK7zRM048INrrt1vB1J4K1z8uuxLu5SBIvX1I9rm\n7waGv3Odpu3ZyiYAdcSgIh0OK95V7fNhB6ElmyBetp7n8KIuQJTt/eANAoGBAJFK\nTBt1lNumF73eQLig7F8x1JyLxMxX473c1m64Qrf9o0Zu/FED0l4MbvKYxZ8w6ThK\nk18dO43I5eSB2vRRCfY4HLVUkq8GpHtlmYsKuVD3Y9iA1Y8qEBI5PhMRanyl+Ksx\nq/BmZRnoLbyNP+HQ/BJDwlc4Y8Z3YJKczEl5VyYFAoGBAKBIqKSmBCkyXEhcYR0c\noG84WtlxvGeUWbsNHN6dQwOoALUv8StAMltiXtmW5Tguw8BfwpI9nrXDA+RgrwvG\nIwgZQkAH208McsI1uQ+LWYe0NZT4iLmArW9HIg5xVeS9jATGaNdmN3h7THd+VLR5\nmGtb1KweKg/4sNGR9LIkrdWE\n-----END PRIVATE KEY-----\n",
+        client_email: "dialogflow-27@adaralinebot-wkyk.iam.gserviceaccount.com",
+        client_id: "115636316585268051927",
         auth_uri: "https://accounts.google.com/o/oauth2/auth",
         token_uri: "https://oauth2.googleapis.com/token",
         auth_provider_x509_cert_url:
           "https://www.googleapis.com/oauth2/v1/certs",
         client_x509_cert_url:
-          "https://www.googleapis.com/robot/v1/metadata/x509/dialogflow-tsduqv%40f15p-slxavh.iam.gserviceaccount.com",
+          "https://www.googleapis.com/robot/v1/metadata/x509/dialogflow-27%40adaralinebot-wkyk.iam.gserviceaccount.com",
       },
     });
 
@@ -162,35 +141,23 @@ async function handleEvent(event, req) {
     console.log(userIntent);
     let message = null;
     switch (userIntent) {
-      case "member":
-        message = member();
-        break;
-      case "Order":
-        message = order();
-        break;
-      case "Order180":
-        message = confirm();
-        break;
-      case "Order650":
-        message = confirm();
-        break;
-      case "Order750":
-        message = confirm();
-        break;
-      case "Order1950":
-        message = confirm();
-        break;
-      case "Confirm":
-        message = payment();
+      case "platform":
+        message = platform();
         break;
       case "Orderlist":
         message = orderlist();
         break;
-      case "addmem":
-        message = addmem();
+      case "ContactUs":
+        message = contactus();
         break;
-      case "addmemtoDB":
-        message = addmemtoDB();
+      case "Promotion":
+        message = promotion();
+        break;
+      case "member":
+        message = member();
+        break;
+      case "phone":
+        message = phone();
         break;
       default:
         message = fallback(req.profile.displayName);

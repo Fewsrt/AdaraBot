@@ -1,9 +1,8 @@
 require("dotenv").config();
-
 module.exports = () => [
   {
     type: "flex",
-    altText: "ตะกร้าสินค้า",
+    altText: "รายการสินค้า",
     contents: {
       type: "carousel",
       contents: [
@@ -11,127 +10,35 @@ module.exports = () => [
           type: "bubble",
           hero: {
             type: "image",
-            url: "https://firebasestorage.googleapis.com/v0/b/comscipay.appspot.com/o/541197-steam-logo-640x360.jpg?alt=media&token=4df824b3-5459-4736-9b06-c9d9f54563e9",
+            url: "https://firebasestorage.googleapis.com/v0/b/adaralinebot-wkyk.appspot.com/o/%E0%B9%80%E0%B8%9B%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B8%B1%E0%B8%A7%E0%B9%82%E0%B8%9F%E0%B8%A1.png?alt=media&token=a53c0d30-ecf8-4716-916c-89cdc7ee1f0d",
             size: "full",
-            aspectRatio: "20:13",
-            aspectMode: "cover",
+            aspectRatio: "20:15",
+            aspectMode: "fit",
           },
           body: {
             type: "box",
             layout: "vertical",
+            spacing: "sm",
             contents: [
               {
                 type: "text",
-                text: "Order #1",
+                text: "Sleeping Mask Moss",
                 weight: "bold",
                 size: "xl",
+                wrap: true,
                 contents: [],
               },
               {
                 type: "box",
                 layout: "baseline",
-                margin: "md",
                 contents: [
                   {
                     type: "text",
-                    text: "ข้อมูลลูกค้า",
-                    size: "sm",
-                    color: "#999999",
+                    text: "490 บาท",
+                    weight: "bold",
+                    size: "xl",
                     flex: 0,
-                    align: "start",
-                    margin: "md",
-                    contents: [],
-                  },
-                ],
-              },
-              {
-                type: "box",
-                layout: "vertical",
-                spacing: "sm",
-                margin: "lg",
-                contents: [
-                  {
-                    type: "box",
-                    layout: "baseline",
-                    spacing: "sm",
-                    contents: [
-                      {
-                        type: "text",
-                        text: "ชื่อลูกค้า:",
-                        size: "sm",
-                        color: "#AAAAAA",
-                        flex: 1,
-                        contents: [],
-                      },
-                      {
-                        type: "text",
-                        text: "ธนกฤต ศรีสุข",
-                        size: "sm",
-                        color: "#666666",
-                        flex: 3,
-                        wrap: true,
-                        contents: [],
-                      },
-                    ],
-                  },
-                  {
-                    type: "box",
-                    layout: "baseline",
-                    spacing: "sm",
-                    contents: [
-                      {
-                        type: "text",
-                        text: "Email:",
-                        size: "sm",
-                        color: "#AAAAAA",
-                        flex: 2,
-                        contents: [],
-                      },
-                      {
-                        type: "text",
-                        text: "62050167@kmitl.ac.th",
-                        size: "sm",
-                        color: "#666666",
-                        flex: 6,
-                        wrap: true,
-                        contents: [],
-                      },
-                    ],
-                  },
-                ],
-              },
-              {
-                type: "box",
-                layout: "vertical",
-                contents: [
-                  {
-                    type: "text",
-                    text: "รายการสินค้า",
-                    weight: "bold",
-                    contents: [],
-                  },
-                  {
-                    type: "text",
-                    text: "- Steam Wallet 180 THB",
-                    contents: [],
-                  },
-                ],
-              },
-              {
-                type: "box",
-                layout: "vertical",
-                contents: [
-                  {
-                    type: "text",
-                    text: ".",
-                    contents: [],
-                  },
-                  {
-                    type: "text",
-                    text: "✔️ ดำเนินการเสร็จสิ้น",
-                    weight: "bold",
-                    align: "start",
-                    gravity: "center",
+                    wrap: true,
                     contents: [],
                   },
                 ],
@@ -141,23 +48,17 @@ module.exports = () => [
           footer: {
             type: "box",
             layout: "vertical",
-            flex: 0,
             spacing: "sm",
             contents: [
               {
                 type: "button",
                 action: {
-                  type: "message",
-                  label: "ยืนยันคำสั่งซื้อ",
-                  text: "ยืนยันคำสั่งซื้อ",
+                  type: "uri",
+                  label: "สั่งซื้อสินค้า",
+                  uri: "https://shop.line.me/@adarath_official/product/321007168",
                 },
-                color: "#C4E4FFFF",
-                height: "sm",
-                style: "link",
-              },
-              {
-                type: "spacer",
-                size: "sm",
+                color: "#FEB6B6FF",
+                style: "primary",
               },
             ],
           },
@@ -166,150 +67,107 @@ module.exports = () => [
           type: "bubble",
           hero: {
             type: "image",
-            url: "https://firebasestorage.googleapis.com/v0/b/comscipay.appspot.com/o/541197-steam-logo-640x360.jpg?alt=media&token=4df824b3-5459-4736-9b06-c9d9f54563e9",
+            url: "https://firebasestorage.googleapis.com/v0/b/adaralinebot-wkyk.appspot.com/o/foam4.png?alt=media&token=21b4e0b4-492e-4dcc-a7a4-fe4fe463067e",
             size: "full",
-            aspectRatio: "20:13",
-            aspectMode: "cover",
+            aspectRatio: "20:15",
+            aspectMode: "fit",
           },
           body: {
             type: "box",
             layout: "vertical",
+            spacing: "sm",
             contents: [
               {
                 type: "text",
-                text: "Order #2",
+                text: "PEARL MOUSSE FORM",
                 weight: "bold",
                 size: "xl",
+                wrap: true,
                 contents: [],
               },
               {
                 type: "box",
                 layout: "baseline",
-                margin: "md",
+                flex: 1,
                 contents: [
                   {
                     type: "text",
-                    text: "ข้อมูลลูกค้า",
-                    size: "sm",
-                    color: "#999999",
-                    flex: 0,
-                    margin: "md",
-                    contents: [],
-                  },
-                ],
-              },
-              {
-                type: "box",
-                layout: "vertical",
-                spacing: "sm",
-                margin: "lg",
-                contents: [
-                  {
-                    type: "box",
-                    layout: "baseline",
-                    spacing: "sm",
-                    contents: [
-                      {
-                        type: "text",
-                        text: "ชื่อลูกค้า:",
-                        size: "sm",
-                        color: "#AAAAAA",
-                        flex: 1,
-                        contents: [],
-                      },
-                      {
-                        type: "text",
-                        text: "ธนกฤต ศรีสุข",
-                        size: "sm",
-                        color: "#666666",
-                        flex: 3,
-                        wrap: true,
-                        contents: [],
-                      },
-                    ],
-                  },
-                  {
-                    type: "box",
-                    layout: "baseline",
-                    spacing: "sm",
-                    contents: [
-                      {
-                        type: "text",
-                        text: "Email:",
-                        size: "sm",
-                        color: "#AAAAAA",
-                        flex: 1,
-                        contents: [],
-                      },
-                      {
-                        type: "text",
-                        text: "62050167@kmitl.ac.th",
-                        size: "sm",
-                        color: "#666666",
-                        flex: 3,
-                        wrap: true,
-                        contents: [],
-                      },
-                    ],
-                  },
-                ],
-              },
-              {
-                type: "box",
-                layout: "vertical",
-                contents: [
-                  {
-                    type: "text",
-                    text: "รายการสินค้า",
+                    text: "329 บาท",
                     weight: "bold",
-                    contents: [],
-                  },
-                  {
-                    type: "text",
-                    text: "- Steam Wallet 1950 THB",
-                    contents: [],
-                  },
-                  {
-                    type: "text",
-                    text: "- Steam Wallet 650 THB",
+                    size: "xl",
+                    flex: 0,
+                    wrap: true,
                     contents: [],
                   },
                 ],
-              },
-              {
-                type: "text",
-                text: ".",
-                contents: [],
-              },
-              {
-                type: "text",
-                text: "❓ รอการชำระเงิน",
-                contents: [],
               },
             ],
           },
           footer: {
             type: "box",
             layout: "vertical",
-            flex: 0,
             spacing: "sm",
             contents: [
               {
                 type: "button",
                 action: {
-                  type: "message",
-                  label: "ยืนยันคำสั่งซื้อ",
-                  text: "ยืนยันคำสั่งซื้อ",
+                  type: "uri",
+                  label: "สั่งซื้อสินค้า",
+                  uri: "https://shop.line.me/@adarath_official/product/321022230",
                 },
-                color: "#C4E4FFFF",
-                height: "sm",
-                style: "link",
-              },
-              {
-                type: "spacer",
-                size: "sm",
+                flex: 2,
+                color: "#6DB9DEFF",
+                style: "primary",
               },
             ],
+          },
+        },
+        {
+          type: "bubble",
+          body: {
+            type: "box",
+            layout: "vertical",
+            spacing: "sm",
+            contents: [
+              {
+                type: "button",
+                action: {
+                  type: "uri",
+                  label: "See more",
+                  uri: "https://shop.line.me/@adarath_official",
+                },
+                flex: 1,
+                gravity: "center",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    quickReply: {
+      items: [
+        {
+          type: "action",
+          action: {
+            type: "message",
+            label: "รายการสินค้า",
+            text: "รายการสินค้า",
+          },
+        },
+        {
+          type: "action",
+          action: {
+            type: "message",
+            label: "โปรโมชั่น",
+            text: "โปรโมชั่น",
+          },
+        },
+        {
+          type: "action",
+          action: {
+            type: "message",
+            label: "ติดต่อเรา",
+            text: "ติดต่อเรา",
           },
         },
       ],
