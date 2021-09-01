@@ -10,10 +10,10 @@ module.exports = () => [
           type: "bubble",
           hero: {
             type: "image",
-            url: "https://firebasestorage.googleapis.com/v0/b/adaralinebot-wkyk.appspot.com/o/%E0%B9%80%E0%B8%9B%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B8%B1%E0%B8%A7%E0%B9%82%E0%B8%9F%E0%B8%A1.png?alt=media&token=a53c0d30-ecf8-4716-916c-89cdc7ee1f0d",
+            url: "https://firebasestorage.googleapis.com/v0/b/adaralinebot-wkyk.appspot.com/o/1.jpg?alt=media&token=6699b3bb-dd5d-49f2-a69a-9e70fe275334",
             size: "full",
-            aspectRatio: "20:15",
-            aspectMode: "fit",
+            aspectRatio: "10:10",
+            aspectMode: "cover",
           },
           body: {
             type: "box",
@@ -22,19 +22,26 @@ module.exports = () => [
             contents: [
               {
                 type: "text",
-                text: "Sleeping Mask Moss",
+                text: "Glu Colla",
                 weight: "bold",
                 size: "xl",
                 wrap: true,
                 contents: [],
               },
               {
+                type: "text",
+                text: "[PRE-ORDER]",
+                color: "#FF0000FF",
+                contents: [],
+              },
+              {
                 type: "box",
                 layout: "baseline",
+                flex: 1,
                 contents: [
                   {
                     type: "text",
-                    text: "490 บาท",
+                    text: "599 บาท",
                     weight: "bold",
                     size: "xl",
                     flex: 0,
@@ -55,7 +62,65 @@ module.exports = () => [
                 action: {
                   type: "uri",
                   label: "สั่งซื้อสินค้า",
-                  uri: "https://shop.line.me/@adarath_official/product/321007168",
+                  uri: "https://shop.line.me/@adarath_official/product/321459372",
+                },
+                flex: 2,
+                color: "#E06666",
+                style: "primary",
+              },
+            ],
+          },
+        },
+        {
+          type: "bubble",
+          hero: {
+            type: "image",
+            url: "https://firebasestorage.googleapis.com/v0/b/adaralinebot-wkyk.appspot.com/o/6181B051-889E-48D4-9500-5DD3BED1AA40.jpg?alt=media&token=593b82b9-1b8f-42af-b7cb-5d642f156f2b",
+            size: "full",
+            aspectRatio: "10:10",
+            aspectMode: "cover",
+          },
+          body: {
+            type: "box",
+            layout: "vertical",
+            spacing: "sm",
+            contents: [
+              {
+                type: "text",
+                text: "Sleeping Mask Moss",
+                weight: "bold",
+                size: "xl",
+                wrap: true,
+                contents: [],
+              },
+              {
+                type: "box",
+                layout: "baseline",
+                contents: [
+                  {
+                    type: "text",
+                    text: "549 บาท",
+                    weight: "bold",
+                    size: "xl",
+                    flex: 0,
+                    wrap: true,
+                    contents: [],
+                  },
+                ],
+              },
+            ],
+          },
+          footer: {
+            type: "box",
+            layout: "vertical",
+            spacing: "sm",
+            contents: [
+              {
+                type: "button",
+                action: {
+                  type: "uri",
+                  label: "สั่งซื้อสินค้า",
+                  uri: "https://shop.line.me/@adarath_official/product/321466712",
                 },
                 color: "#FEB6B6FF",
                 style: "primary",
@@ -67,10 +132,10 @@ module.exports = () => [
           type: "bubble",
           hero: {
             type: "image",
-            url: "https://firebasestorage.googleapis.com/v0/b/adaralinebot-wkyk.appspot.com/o/foam4.png?alt=media&token=21b4e0b4-492e-4dcc-a7a4-fe4fe463067e",
+            url: "https://firebasestorage.googleapis.com/v0/b/adaralinebot-wkyk.appspot.com/o/foam4.png?alt=media&token=794d53f2-6f02-40cf-a79e-01fc04963c74",
             size: "full",
-            aspectRatio: "20:15",
-            aspectMode: "fit",
+            aspectRatio: "10:10",
+            aspectMode: "cover",
           },
           body: {
             type: "box",
@@ -79,7 +144,7 @@ module.exports = () => [
             contents: [
               {
                 type: "text",
-                text: "PEARL MOUSSE FORM",
+                text: "PEARL MOUSSE FOAM",
                 weight: "bold",
                 size: "xl",
                 wrap: true,
@@ -92,7 +157,7 @@ module.exports = () => [
                 contents: [
                   {
                     type: "text",
-                    text: "329 บาท",
+                    text: "349 บาท",
                     weight: "bold",
                     size: "xl",
                     flex: 0,
@@ -118,26 +183,6 @@ module.exports = () => [
                 flex: 2,
                 color: "#6DB9DEFF",
                 style: "primary",
-              },
-            ],
-          },
-        },
-        {
-          type: "bubble",
-          body: {
-            type: "box",
-            layout: "vertical",
-            spacing: "sm",
-            contents: [
-              {
-                type: "button",
-                action: {
-                  type: "uri",
-                  label: "See more",
-                  uri: "https://shop.line.me/@adarath_official",
-                },
-                flex: 1,
-                gravity: "center",
               },
             ],
           },

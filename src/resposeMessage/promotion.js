@@ -7,10 +7,10 @@ module.exports = () => [
       type: "bubble",
       hero: {
         type: "image",
-        url: "https://firebasestorage.googleapis.com/v0/b/adaralinebot-wkyk.appspot.com/o/foam4.png?alt=media&token=21b4e0b4-492e-4dcc-a7a4-fe4fe463067e",
+        url: "https://firebasestorage.googleapis.com/v0/b/adaralinebot-wkyk.appspot.com/o/1.jpg?alt=media&token=6699b3bb-dd5d-49f2-a69a-9e70fe275334",
         size: "full",
-        aspectRatio: "20:15",
-        aspectMode: "fit",
+        aspectRatio: "5:5",
+        aspectMode: "cover",
       },
       body: {
         type: "box",
@@ -19,7 +19,7 @@ module.exports = () => [
         contents: [
           {
             type: "text",
-            text: "PEARL MOUSSE FORM",
+            text: "GLU COLLA",
             weight: "bold",
             size: "xl",
             wrap: true,
@@ -38,7 +38,7 @@ module.exports = () => [
             contents: [
               {
                 type: "text",
-                text: "329 บาท",
+                text: "599 บาท",
                 weight: "bold",
                 size: "xl",
                 flex: 0,
@@ -60,10 +60,10 @@ module.exports = () => [
             action: {
               type: "uri",
               label: "สั่งซื้อสินค้า",
-              uri: "https://shop.line.me/@adarath_official/product/321022230",
+              uri: "https://shop.line.me/@adarath_official/product/321459372",
             },
             flex: 2,
-            color: "#6DB9DEFF",
+            color: "#E06666",
             style: "primary",
           },
         ],
