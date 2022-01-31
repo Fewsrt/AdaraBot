@@ -28,12 +28,12 @@ module.exports = () => [
                 wrap: true,
                 contents: [],
               },
-              {
-                type: "text",
-                text: "[PRE-ORDER]",
-                color: "#FF0000FF",
-                contents: [],
-              },
+              // {
+              //   type: "text",
+              //   text: "[PRE-ORDER]",
+              //   color: "#FF0000FF",
+              //   contents: [],
+              // },
               {
                 type: "box",
                 layout: "baseline",
@@ -41,7 +41,7 @@ module.exports = () => [
                 contents: [
                   {
                     type: "text",
-                    text: "599 บาท",
+                    text: "690 บาท",
                     weight: "bold",
                     size: "xl",
                     flex: 0,
@@ -157,7 +157,7 @@ module.exports = () => [
                 contents: [
                   {
                     type: "text",
-                    text: "349 บาท",
+                    text: "279 บาท",
                     weight: "bold",
                     size: "xl",
                     flex: 0,
