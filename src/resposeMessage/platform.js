@@ -54,16 +54,16 @@ module.exports = () => [
             color: "#F3A428FF",
             style: "primary",
           },
-          {
-            type: "button",
-            action: {
-              type: "uri",
-              label: "Adara Website",
-              uri: "https://liff.line.me/1656228840-OnZXo1x2",
-            },
-            color: "#1FC3D9FF",
-            style: "primary",
-          },
+          // {
+          //   type: "button",
+          //   action: {
+          //     type: "uri",
+          //     label: "Adara Website",
+          //     uri: "https://liff.line.me/1656228840-OnZXo1x2",
+          //   },
+          //   color: "#1FC3D9FF",
+          //   style: "primary",
+          // },
         ],
       },
     },

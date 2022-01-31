@@ -69,17 +69,17 @@ module.exports = () => [
         flex: 0,
         spacing: "md",
         contents: [
-          {
-            type: "button",
-            action: {
-              type: "uri",
-              label: "Adara Website",
-              uri: "https://adarathailand.makewebeasy.co/contactus",
-            },
-            color: "#FF5757FF",
-            height: "sm",
-            style: "primary",
-          },
+          // {
+          //   type: "button",
+          //   action: {
+          //     type: "uri",
+          //     label: "Adara Website",
+          //     uri: "https://adarathailand.makewebeasy.co/contactus",
+          //   },
+          //   color: "#FF5757FF",
+          //   height: "sm",
+          //   style: "primary",
+          // },
           {
             type: "button",
             action: {
